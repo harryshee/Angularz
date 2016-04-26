@@ -1,0 +1,69 @@
+<!doctype html>
+<html ng-app="app5" ng-cloak>
+    <head>
+        <title>AngularJS Tutorial 5</title>
+        <style>    
+            [ng\:cloak], [ng-cloak], .ng-cloak {
+                display: none;
+            }
+            table {
+                width: 400px;
+                text-align: left;
+                border: 2px solid black;
+                padding: 10px;
+            }
+            input.ng-dirty.ng-invalid {
+                border-color: red;
+            }
+            
+        </style>
+    </head>
+    <body>
+
+        <div id="groceryList" ng-controller="gListCtrl">
+            <h3>Grocery List</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Purchased</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="grocery in groceries">
+                    <td>{{grocery.item}}</td>
+                    <td>
+                        <input type="checkbox" ng-model="grocery.purchased"/>
+                    </td>
+                    <td>{{grocery.quantity}}
+                        <button ng-click="addQuantity(grocery.item)">Add</button>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            
+            <!-- allow user to enter new information -->
+            <label>New Item:
+                <input type="text" ng-model="newItem" />
+            </label>
+            <button ng-click="addItem(newItem)">Add Item</button>
+            
+            <br>
+            <br>
+            
+            <label>Remove Item:
+                <input id="text1" type="text" ng-model="existItem" />
+            </label>
+            <button ng-click="remItem(existItem)">Remove Item</button>
+            
+            <h4>{{missingNewItemError}}</h4>
+            
+        </div>  <!-- End of groceryList -->
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        <script src="js/exam5.js"></script>
+        
+        
+        
+    </body>
+</html>
